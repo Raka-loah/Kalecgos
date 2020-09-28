@@ -1,0 +1,7 @@
+.vscode/settings.json
+.vscode/launch.json
+*.sqlite
+*.pyc
+*.log
+__pycache__
+.python-version

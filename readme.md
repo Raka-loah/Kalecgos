@@ -28,12 +28,15 @@ Kalecgos（卡雷苟斯）是WOW的一条战五渣蓝龙。唯一一条被矮人
 看一眼 `Kalecgos/plugins/test` 里面的内容就知道有多搞笑了。
 
 **怎么用？**
+------
 
 `Kalecgos` 目前依赖以下包，装一下就好：
 
 `pip install quart pypubsub requests`
 
 未来会需要更多包，但现在这些就够了。
+
+直接 `python run.py` 就搞定了，会启动在 `8888` 端口，由于是 `Quart` 框架，所以用 `hypercorn` 启动就是生产环境。
 
 **进度：**
 ------

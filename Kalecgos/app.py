@@ -1,4 +1,4 @@
-from Kalecgos.core import Kalec, Event
+from Kalecgos.core import Kalec, Kalec_Event
 from importlib import import_module
 from quart import Quart, request, jsonify
 import os
@@ -28,7 +28,7 @@ async def post():
         app.logger.setLevel(logging.INFO)
         app.logger.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender'].get('user_id', '')})]:{j['message']}")
 
-        event = Event()
+        event = Kalec_Event()
         event.generate(j)
 
         Kalec.fire_event(event.event, event)

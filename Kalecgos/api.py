@@ -1,7 +1,14 @@
-from Kalecgos.core import Kalec
+from Kalecgos.core import Kalec, Kalec_Event
+
+Event = Kalec_Event
+
+_G = Kalec.get_listeners
 
 def RegisterEvent(func, event):
     return Kalec.register_func(func, event)
+
+def UnregisterEvent(func, event):
+    return Kalec.unregister_func(func, event)
 
 def SendChatMessage(message, chat_type, target_id):
     """

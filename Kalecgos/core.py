@@ -28,11 +28,26 @@ class Kalecgos:
             return True
         return False
 
+    def unregister_func(self, func, event):
+        if event in self.__events:
+            self.__pub.unsubscribe(func, event)
+            return True
+        return False
+
     def register_plugin(self, plugin_name, plugin_toc):
         self.__plugins[plugin_name] = plugin_toc
 
     def loaded_plugins(self):
         return self.__plugins
+
+    def get_listeners(self):
+        _G = {}
+        for topic, v in self.__pub.topicsMap.items():
+            for listener in v.listeners:
+                if listener.getCallable() not in _G:
+                    _G[listener.getCallable()] = []
+                _G[listener.getCallable()].append(topic)
+        return _G
 
     def fire_event(self, event, data):
         self.__pub.sendMessage(event, Event=data)
@@ -50,7 +65,7 @@ class Kalecgos:
 
 Kalec = Kalecgos()
 
-class Event:
+class Kalec_Event:
     def __init__(self):
         self.event= ''
         self.time = 0
